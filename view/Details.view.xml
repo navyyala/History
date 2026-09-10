@@ -1,0 +1,165 @@
+<core:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:ui="sap.ca.ui" 
+	xmlns="sap.m"
+	controllerName="PO_HISTORY.view.Details">
+	
+	<Page id="DetailsPage" navButtonPress="onNavBack" showNavButton="true" title="{i18n>detailTitle} {Aufnr}" showFooter="false">
+		
+		<content>
+			<!-- Formulaitre d'information -->
+			<Panel>
+				<content>
+					<!--1st row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--Poste technique-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblPosteTechnique}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Tplnrtxt}" class="headerTxt"/>
+						</HBox>
+						<!--Date de cr�ation-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblStartDate}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{path: 'QmDate', type: 'sap.ui.model.type.Date', formatOptions: { style:'short' }}" class="headerTxt"/>
+						</HBox>
+					</HBox>
+					<!--2nd row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--�quipement-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblEquipement}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Equnrtxt}" class="headerTxt"/>
+						</HBox>
+						<!--Date de cl�ture-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblFinishDate}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{path: 'CloDate', type: 'sap.ui.model.type.Date', formatOptions: { style:'short' }}" class="headerTxt"/>
+						</HBox>
+					</HBox>
+					<!--3rd row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd" width="900px">
+						<!--Description JII 3945 -->
+						
+						<VBox>
+						<Label text="{i18n>textLblTypeActivite}:"/>
+						<Label text="{i18n>textLblDescription}:"/>
+						</VBox>
+						<ToolbarSpacer width="10px"/>
+						<TextArea rows="5" value="{Description}" editable="false" width="900px"/>
+					</HBox>
+					<!--4th row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--Temps total d'intervention-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblInterventionTime}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Conftime} min"/>
+						</HBox>
+						<!--Emetteur-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblEmetteur}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Qmnam}"/>
+						</HBox>
+						<!--Num�ro du plan pr�ventif-->
+						<HBox width="400px">
+							<Label text="{i18n>textFragmentLblPlanNumber}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{path: 'Warpl', formatter: '.removeLeadingZeros'}"/>
+						</HBox>
+					</HBox>
+					<!--5th row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd" visible="false" id="hboxstartdateid">
+						<!--Breakdown Start Date-->
+						<HBox width="400px">
+							<Label text="{i18n>BreakdownStartDate}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text id="breakdownstartdateid"/>
+						</HBox>
+						<!--Breakdown Start Time-->
+						<HBox width="400px">
+							<Label text="{i18n>BreakdownStartTime}:"/>
+							<ToolbarSpacer width="10px"/>
+							<TimePicker id="breakdownstarttimeid"  displayFormat="HH:mm:ss" width="50%" enabled="false"/>
+						</HBox>
+					</HBox>
+					<!--6th row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--Temps d'arr�t-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblStopTime}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Eauszt}{Unit}"/>
+						</HBox>
+						<!--Type de travaux-->
+						<!--<HBox width="400px">-->
+						<!--	<Label text="{i18n>textLblWorktype}:"/>-->
+						<!--	<ToolbarSpacer width="10px"/>-->
+						<!--	<Text text="{Kurztext}"/>-->
+						<!--</HBox>-->
+						<!--Priorit�-->
+						<HBox width="400px">
+							<Label text="{i18n>textLblPriority}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Prioktxt}"/>
+						</HBox>
+					</HBox>
+					<!--7th row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--Failure-->
+						<HBox width="600px">
+							<Label text="{i18n>textFragmentLblFailCode}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Fegrp} - {Fegrptext}"/>
+						</HBox>
+						<HBox width="600px">
+							<Text text="{Fecod} - {Fecodtext}"/>
+						</HBox>
+					</HBox>
+					<!--8th row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--Cause-->
+						<HBox width="600px">
+							<Label text="{i18n>textFragmentLblCauseCode}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Urgrp} - {Grouptext}"/>
+						</HBox>
+						<HBox width="600px">
+							<Text text="{Urcod} - {Kurztext}"/>
+						</HBox>
+					</HBox>
+					<!--9th row-->
+					<HBox justifyContent="Start" class="sapUiMediumMarginBeginEnd">
+						<!--Function-->
+						<HBox width="600px">
+							<Label text="{i18n>textFragmentLblCatFunc}:"/>
+							<ToolbarSpacer width="10px"/>
+							<Text text="{Otgrp} - {Otgrptext}"/>
+						</HBox>
+						<HBox width="600px">
+							<Text text="{Oteil} - {Oteiltext}"/>
+						</HBox>
+					</HBox>
+				</content>
+			</Panel>
+			<!--Items-->
+			<Panel id="filterItems">
+				<content></content>
+			</Panel>
+			<!--Pi�ces jointes-->
+			<Panel id="filterAttachment">
+				<content></content>
+			</Panel>
+			<!--Sortie de stock-->
+			<Panel id="filterArticles">
+				<content></content>
+			</Panel>
+		</content>
+	</Page>
+</core:View>

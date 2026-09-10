@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:ui="sap.suite.ui.commons" xmlns="sap.m">
+	<Dialog id="addArticleDialog" title="{i18n>fragmentAddArticleTitle}" resizable="true">
+		<content>
+			<form:SimpleForm editable="true" id="articleForm" maxContainerCols="3">
+				<form:content>
+					<Label text="{i18n>textFragmentLblArticleCode}"/>
+					<Input id="inputArticle" showValueHelp="true" valueHelpRequest="onScanArticle" change="onSearchArticle" width="60%"/>
+					<Text id="articleDesc"/>
+					<Label id="qtyLbl" text="{i18n>textFragmentLblQuantity}"/>
+					<Input id="inputQty" type="Number" width="60%"/>
+					<Text id="qtyUnit"/>
+					<Label id="dateLbl" text="{i18n>textFragmentLblDate}"/>
+					<DatePicker id="inputDate" width="60%" dateValue="{stock>/date}" value="{path:'stock>/date', type:'sap.ui.model.type.Date', formatOptions: { style: 'short', strictParsing: true}}" displayFormat="short"  />
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<Toolbar class="searchTb">
+			<ToolbarSpacer/>
+			<Button press="searchArticle" text="{i18n>textBtnSearch}" class="searchBtn" />
+			<Button press="saveArticle" text="{i18n>textBtnValidate}" class="searchBtn"/>
+			<Button press="closeDialog" text="{i18n>textBtnCancel}" class="searchBtn"/>
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

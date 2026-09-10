@@ -1,0 +1,135 @@
+{
+    "resources": [
+        {
+            "name": "util/CSVGenerator.js"
+        },
+        {
+            "name": "util/messages.js"
+        },
+        {
+            "name": "util/FileGenerator.js"
+        },
+        {
+            "name": "util/stockOutputHelper.js"
+        },
+        {
+            "name": "util/exportService.js"
+        },
+        {
+            "name": "localIndex.html"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "css/fullScreenStyles.css"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": "i18n/messageBundle_de.properties",
+            "raw": "messageBundle.properties"
+        },
+        {
+            "name": "i18n/messageBundle_es.properties",
+            "raw": "messageBundle.properties"
+        },
+        {
+            "name": "i18n/messageBundle_en.properties",
+            "raw": "messageBundle.properties"
+        },
+        {
+            "name": "i18n/messageBundle.properties",
+            "raw": "messageBundle.properties"
+        },
+        {
+            "name": "i18n/messageBundle_fr.properties",
+            "raw": "messageBundle.properties"
+        },
+        {
+            "name": "i18n/messageBundle_pt.properties",
+            "raw": "messageBundle.properties"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "flp-config.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "view/Details.controller.js"
+        },
+        {
+            "name": "view/fragment/details.fragment.xml"
+        },
+        {
+            "name": "view/fragment/editItem.fragment.xml"
+        },
+        {
+            "name": "view/fragment/PosteTechniqueDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragment/items.fragment.xml"
+        },
+        {
+            "name": "view/fragment/attachments.fragment.xml"
+        },
+        {
+            "name": "view/fragment/articlesConso.fragment.xml"
+        },
+        {
+            "name": "view/fragment/EquipmentDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragment/searchArticle.fragment.xml"
+        },
+        {
+            "name": "view/fragment/hierarchyDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragment/addArticle.fragment.xml"
+        },
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/Main.controller.js"
+        },
+        {
+            "name": "view/Details.view.xml"
+        },
+        {
+            "name": "view/Master.controller.js"
+        },
+        {
+            "name": "dist/di.code-validation.core_issues.json"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "model/metadata.xml"
+        }
+    ]
+}

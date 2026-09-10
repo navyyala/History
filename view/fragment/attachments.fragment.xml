@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+  <UploadCollection beforeUploadStarts="onBeforeUploadStarts" change="onChange" fileDeleted="onFileDeleted" id="uploads" items="{/ATTACHSet}"
+    noDataText="{i18n>noAttacmentFound}" showSeparators="All" uploadComplete="onUploadComplete" uploadEnabled="false"
+    uploadUrl="/sap/opu/odata/sap/ZGPM_ORDER_HISTORY_SRV/ATTACHSet">
+    <items>
+      <UploadCollectionItem documentId="{Doknr}" enableDelete="false" enableEdit="false" fileName="{Dktxt}" mimeType="{MimeType}"
+        url="/sap/opu/odata/sap/ZGPM_ORDER_HISTORY_SRV/ATTACHSet(Doknr='{Doknr}',Aufnr='{Aufnr}',Tplnr='{Tplnr}',Equnr='{Equnr}')/$value" visibleDelete="false"
+        visibleEdit="false"></UploadCollectionItem>
+    </items>
+  </UploadCollection>
+</core:FragmentDefinition>

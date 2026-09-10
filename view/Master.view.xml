@@ -1,0 +1,187 @@
+<core:View controllerName="PO_HISTORY.view.Master" xmlns:core="sap.ui.core"
+	xmlns:cust="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:l="sap.ui.layout"
+	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:smartTable="sap.ui.comp.smarttable" xmlns="sap.m">
+	<Page id="orderListPage" navButtonPress="onNavBack" showNavButton="true">
+		<!-- FILTERS SECTION -->
+		<!-- filtres de recherche -->
+		<FlexBox justifyContent="End">
+			<items>
+				<!-- Bouton Export -->
+				<Button press="onExportPressed" text="{i18n>textBtnExport}" type="Emphasized" width="auto" class="sapUiMediumMargin">
+					<layoutData>
+						<FlexItemData alignSelf="End"/>
+					</layoutData>
+				</Button>
+				<!-- Bouton Go -->
+				<Button press="onGoPressed" text="{i18n>textBtnGO}" type="Emphasized" width="auto" class="sapUiMediumMargin">
+					<layoutData>
+						<FlexItemData alignSelf="End"/>
+					</layoutData>
+				</Button>
+				<!-- Bouton Reset -->
+				<Button press="onResetPressed" text="{i18n>textBtnReset}" type="Emphasized" width="auto" class="sapUiMediumMargin">
+					<layoutData>
+						<FlexItemData alignSelf="End"/>
+					</layoutData>
+				</Button>
+			</items>
+		</FlexBox>
+		<!-- 1st row -->
+		<HBox justifyContent="SpaceBetween">
+			<!-- Poste Technique -->
+			<!--<VBox class="sapUiMediumMarginBeginEnd">-->
+			<!--	<Label text="{i18n>textLblPosteTechnique}"/>-->
+			<!--	<Input id="filtre_posteTechnique" showValueHelp="true" valueHelpRequest="onPosteTechniqueValueHelpRequest" class="inputsAndCombos"/>-->
+			<!--</VBox>-->
+			<!-- Type d'activit� -->
+			<!--<VBox class="sapUiMediumMarginBeginEnd">-->
+			<!--	<Label text="{i18n>textLblTypeActivite}"/>-->
+			<!--	<ComboBox id="filtre_typeActivite" items="{ path: '/ACTTYPESet' }" class="inputsAndCombos">-->
+			<!--		<core:Item key="{ActType}" text="{ActDesc}"/>-->
+			<!--	</ComboBox>-->
+			<!--</VBox>-->
+			<!--Type d'ordre -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label text="{i18n>textLblTypeOrdre}"/>
+				<ComboBox id="filtre_typeOrdre" items="{ path: '/ORDERTYPESet'}" class="inputsAndCombos">
+					<core:Item key="{Auart}" text="{Auart} - {Txt}"/>
+				</ComboBox>
+			</VBox>
+		</HBox>
+		<!-- 2nd row -->
+		<HBox class="sapUiSmallMarginTop">
+			<!--Type de moyens: Poste technique de niveau 3-->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label text="{i18n>textLblTypeMoyen}"/>
+				<ComboBox id="filtre_typeMoyen" items="{ path: '/FUNCLEVELSet'}" class="inputsAndCombos" selectionChange="handleTypeMoyenChange">
+					<core:Item key="{Name}" text="{Description}"/>
+				</ComboBox>
+			</VBox>
+			<!-- Emetteur -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<!--<Label class="" text="{i18n>textLblEmetteur}"/>-->
+				<!--<ComboBox id="filtre_emeteur" items="{ path: '/REQUESTERSet' }" class="inputsAndCombos">-->
+				<!--	<core:Item key="{Pernr}" text="{Ename}"/>-->
+				<!--</ComboBox>-->
+				<Label class="" text="{i18n>textFragmentLblEmetteur}"/>
+				<Input id="filtre_emeteur" class="inputsAndCombos" width="100%" />
+			</VBox>
+			<!-- Document date from -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<!--<Label text="{i18n>textLblDocumentdateDeb}"/>-->
+				<Label text="{i18n>textLblDocumentdateDeb}"/>
+				<DatePicker displayFormat="short" editable="true" enabled="true" id="filtre_documentDateDeb" class="inputsAndCombos"/>
+			</VBox>
+			<!-- Groupe de travail -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label text="{i18n>textLblWorktypeGrp}"/>
+				<ComboBox id="filtre_group" items="{ path: '/WORKGROUPSet' }" selectionChange="handleWorkGroupChange" class="inputsAndCombos">
+					<core:Item key="{Codegruppe}" text="{Grouptext}"/>
+				</ComboBox>
+			</VBox>
+		</HBox>
+		<!-- 3rd row -->
+		<HBox class="sapUiSmallMarginTop">
+			<!--Recherche par hierarchie-->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label class="" text="{i18n>textLblRechHierarchie}"/>
+				<!--<ComboBox id="filtre_hierarchie" items="{ path: '/FUNCLEVELSet'}" class="inputsAndCombos">-->
+				<!--	<core:Item key="{Name}" text="{Description}"/>-->
+				<!--</ComboBox>-->
+				<Input id="filtre_hierarchie" value="" enabled="false" valueHelpOnly="true" class="inputsAndCombos" showValueHelp="true"
+					valueHelpRequest="onHierarchyValueHelp"/>
+			</VBox>
+			<!-- Intervenant -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label class="" text="{i18n>textLblEmetteur}"/>
+				<ComboBox id="filtre_intervenant" items="{ path: '/OWNERSet' }" class="inputsAndCombos">
+					<core:Item key="{Pernr}" text="{Ename}"/>
+				</ComboBox>
+			</VBox>
+			<!-- Document date from to -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label text="{i18n>textLblDocumentdateFin}"/>
+				<DatePicker displayFormat="short" editable="true" enabled="true" id="filtre_documentDateFin" class="inputsAndCombos"/>
+			</VBox>
+			<!-- Type de travaux -->
+			<VBox class="sapUiMediumMarginBeginEnd">
+				<Label text="{i18n>textLblWorktype}"/>
+				<ComboBox id="filtre_typeTravaux" items="{ path: '/WORKTYPESet' }" enabled="false">
+					<core:Item cust:codeGroup="{Codegruppe}" key="{Code}" text="{Kurztext}"/>
+				</ComboBox>
+			</VBox>
+		</HBox>
+		<!-- RESULTS TABLE -->
+		<Table class="navTableControlLayout" growing="false" growingScrollToLoad="false" headerText="" id="catalogTable"
+			items="{path: '/ORDERLISTSet', length: 100000 }">
+			<headerToolbar id="catalogTable_headerToolbar">
+				<Toolbar id="tableToolbar">
+					<Title text="{i18n>orderListPageTitleTable} ({settingModel>/worklistCount})"/>
+					<Label class="sapMH4FontSize" id="catalogTitle" text="{viewProperties&gt;/catalogTitleText}"
+						visible="{viewProperties&gt;/catalogTitleVisible}"/>
+					<ToolbarSpacer id="toolbarSpacer"/>
+					<SearchField id="searchField" placeholder="{i18n&gt;masterSearchPlaceholder}" search="onSearchPressed" showRefreshButton="false"
+						tooltip="{i18n&gt;masterSearchTooltip}" width="{viewProperties&gt;/searchFieldWidth}"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns id="catalogTable_columns">
+				<Column hAlign="Left" id="col_ordernumber" width="{viewProperties&gt;/smallWidth}">
+					<header id="col_ordernumber_header">
+						<Label id="col_ordernumber_label" text="{i18n>colNoOrdre}"/>
+					</header>
+				</Column>
+				<Column hAlign="Left" id="col_orderdesc" width="{viewProperties&gt;/largeWidth}">
+					<header id="col_orderdesc_header">
+						<Label id="col_orderdesc_label" text="{i18n>colDescription}"/>
+					</header>
+				</Column>
+				<Column hAlign="Left" id="col_postetechnique" width="{viewProperties&gt;/normalWidth}">
+					<header id="col_postetechnique_header">
+						<Label id="col_postetechnique_label" text="{i18n>colPostetechnique}"/>
+					</header>
+				</Column>
+				<Column hAlign="Left" id="col_equipement" width="{viewProperties&gt;/normalWidth}">
+					<header id="col_equipement_header">
+						<Label id="col_equipement_label" text="{i18n>colEquipement}"/>
+					</header>
+				</Column>
+				<!--<Column hAlign="Left" id="col_typetravaux" width="10%">-->
+				<!--	<header id="col_typetravaux_header">-->
+				<!--		<Label id="col_typetravaux_label" text="{i18n>colTypetravaux}"/>-->
+				<!--	</header>-->
+				<!--</Column>-->
+				<Column hAlign="Left" id="col_typeordre" width="10%">
+					<header id="col_typeordre_header">
+						<Label id="col_typeordre_label" text="{i18n>colTypeordre}"/>
+					</header>
+				</Column>
+				<Column hAlign="Left" id="col_qm_date" width="{viewProperties&gt;/smallWidth}">
+					<header id="col_qm_date_header">
+						<Label id="col_qm_date_label" text="{i18n>colDate}"/>
+					</header>
+				</Column>
+				<Column hAlign="Left" id="col_clo_date" width="{viewProperties&gt;/smallWidth}">
+					<header id="col_clo_date_header">
+						<Label id="col_clo_date_label" text="{i18n>colCloDate}"/>
+					</header>
+				</Column>
+			</columns>
+			<ColumnListItem class="navTableItemLayout" id="columnListItem" press="onLineItemPressed" type="Navigation" vAlign="Middle">
+				<cells id="columnListItem_cells">
+					<!-- colonnes -->
+					<ObjectIdentifier text="" title="{Aufnr}"/>
+					<Text id="col_description" text="{Ktext}"/>
+					<Text id="col_posteTechniqueVal" text="{Tplnrtxt}"/>
+					<Text id="col_equipementVal" text="{Equnrtxt}"/>
+					<!--<Text id="col_typeTravauxVal" text="{Kurztext}"/>-->
+					<Text id="col_typeOrdreVal" text="{OrderType}"/>
+					<DatePicker dateValue="{path: 'Date', formatter: '.formatDate'}" placeholder="" displayFormat="short" editable="false" enabled="true"
+						id="col_qmDateVal"/>
+					<DatePicker dateValue="{path: 'CloDate', formatter: '.formatDate'}" displayFormat="short" placeholder="" editable="false" enabled="true"
+						id="col_cloDateVal"/>
+				</cells>
+			</ColumnListItem>
+		</Table>
+		<footer/>
+	</Page>
+</core:View>
