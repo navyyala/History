@@ -1,3 +1,6 @@
+.filterGrid .inputsAndCombos {
+	width: 100% !important;
+}
 .navTableControlLayout {
     padding: 1rem 2rem 0 2rem;
 }

@@ -50,6 +50,10 @@ div#__xmlview1-equipement--sdEquipement-subHeader-BarPH {
 	width: 220px !important;
 }
 
+.filterGrid .inputsAndCombos {
+	width: 100% !important;
+}
+
 .listNav * {
     font-size: 0.7rem !important;
     color: blue !important;
