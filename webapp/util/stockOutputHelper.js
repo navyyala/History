@@ -36,7 +36,7 @@ sap.ui.define([
 						type: sap.m.ButtonType.Reject,
 						press: function(oEvent) {
 							var quantity = oEvent.getSource().getParent().getContent()[0].getItems()[1].getValue();
-							var entryToBeDeleted = "/GOODS_ISSUESet(Aufnr='" + this.selectedData.Aufnr + "',Matnr='" + this.selectedData.Matnr +
+							var entryToBeDeleted = "/GOODS_ISSUESet(Aufnr='" + this.selectedData.Aufnr + "',Bwtar='" + this.selectedData.Bwtar + "',Matnr='" + this.selectedData.Matnr +
 								"',Quantity=" +
 								quantity + ",Lgort='" + this.selectedData.Lgort + "')";
 							this.getView().getModel("orderitem").remove(entryToBeDeleted, {

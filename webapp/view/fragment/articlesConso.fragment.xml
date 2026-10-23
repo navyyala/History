@@ -38,7 +38,12 @@
 						<Label id="lblStorageBin" text="{i18n>libColStorageBin}"/>
 					</header>
 				</Column>
-					<Column  id="colDelete" width="10%">
+				<Column id="colCondition" width="25%">
+					<header>
+						<Label id="lblCondition" text="{i18n>textFragmentLblCondition}"/>
+					</header>
+				</Column>
+				<Column  id="colDelete" width="10%">
 					<header>
 						<Label id="lblDelete" text=" "/>
 					</header>
@@ -55,6 +60,7 @@
 						<!--JII 6585 -->
 						<Text id="txtStorageLoc" text="{Lgort}"/> 
 						<Text id="txtStorageBin" text="{Lgpbe}"/> 
+						<Text id="txtCondition" text="{Bwtar}"/>
 						<Button icon="sap-icon://delete"  press=".stockOutputHelper.onDeleteStockOutput"/>
 						<!--JII 6585 end-->
 					</cells>
