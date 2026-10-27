@@ -102,10 +102,17 @@
 				<ColumnListItem id="itemsTemplate" cust:definitive="{orderitem>Finconf}" press="onItemSelect" type="Navigation">
 					<cells>
 						<Text id="txtPosteNo" text="{parts: [{path: 'orderitem>Vornr'},{path: 'orderitem>Uvorn'}], formatter : '.formatItem'}"/>
-						<RadioButton id="cbPartielle" groupName="{orderitem>Vornr}Options" selected="{path: 'orderitem>Parconf'}"
-							enabled="{parts: [{path: 'orderitem>Finconf'},{path: 'orderitem>Uvorn'}], formatter: '.reverseBoolean'}" editable="false"/>
-						<RadioButton id="cbDefinitive" groupName="{orderitem>Vornr}Options" selected="{path: 'orderitem>Finconf'}"
-							enabled="{parts: [{path: 'orderitem>Finconf'},{path: 'orderitem>Uvorn'}], formatter: '.reverseBoolean'}" editable="false"/>
+						<RadioButton
+							id="cbPartielle"
+							groupName="{= ${orderitem>Aufnr} + '_' + ${orderitem>Vornr} + '_' + ${orderitem>Uvorn} + '_Options' }"
+							selected="{orderitem>Parconf}"
+							editable="false"/>
+
+						<RadioButton
+							id="cbDefinitive"
+							groupName="{= ${orderitem>Aufnr} + '_' + ${orderitem>Vornr} + '_' + ${orderitem>Uvorn} + '_Options' }"
+							selected="{orderitem>Finconf}"
+							editable="false"/>
 						<Text id="txtPosteIntervenant" text="{orderitem>Ename}"/>
 						<Text id="txtPosteIntervenantId" text="{orderitem>Pernr}" visible="false"/>
 						<Text id="txtPosteDescription" text="{orderitem>Description}"/>
